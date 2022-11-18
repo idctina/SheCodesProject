@@ -4,167 +4,70 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project 3</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-</head>
-<body>
-        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <style> 
-    h5 {
-         color:red;
-        } 
-
-    .right-paragraph { 
-        float: right;
-    margin-left:10px;
-    margin-top: -65px;
-    font-weight: bolder;
-    font-size:20px;
-}
-
-.left-paragraph { font-weight:bolder;
-font-size: larger;}
-.col { background-color: azure;
-border-style: solid;
-border-width: 1px;
-border-radius: 10px;
-padding-bottom:45px;
-margin-left: 20px;
-padding-left: 7px;
-padding: 10px;
-margin-right: 10px;
-text-align: center;
-font-weight: bolder;}
-
-
-
-
-    </style>
    
-  
-    <form id="searchForm">
-      <input type="text" 
-      placeholder="Search city..."
-      autocomplete="off"
-      autofocus="on"
-      id = "city-input"
-                 
-      />
-       <input type="submit" value="search" class="btn btn-primary"/>
-  </form>
-     
-  
-<br/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <title> Weather App </title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<link rel="stylesheet" href="src/style.css"/>
+</head>
 
-
-<div class="card" style="width: 50rem;">
-  <div class="card-body">
-    <h5 class="card-title" id="cityResult">CURRENTLY IN LONDON</h5>
-    <hr/>
-    <div>
-    <div style="float: left">
-    <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/049/098/original/suncloud.png?1666040291" width="70px"/>
-    </div>
-    <div>
-     <p class="left-paragraph" id="temp" >
-        14°
-    </p>
-        <p class="left-paragraph" id="humidity">
-        Cloudy
-       
-    </p>
-    </div>
-
+<body>
     
-    </div>
+    <div class="container">
+      
 
-    <p class="right-paragraph"> 
-        Day, Time 
+        <div class="weather-app">
+
+
+            <div class="weather-overview">
+                <form id="search-form"> 
+<div class="row">
+<div class="col-9">
+                <input type="search" placeholder="Enter a city..." class="form-control">
+
+  </div>
+  <div class="col-3">             
+                <input type="submit" value="search" class="btn btn-primary"/>
+</div>
+</div>
+
+                </form>
+    <h1 id="city">London</h1>
+<ul>
+    <li id="date">Thursday 19:00</li>
+    <li id="condition"> Cloudy</li>
+</ul>
+</div>
+<div class="row">
+<div class="col-6">
+<img src="https://ssl.gstatic.com/onebox/weather/64/cloudy.png" alt="Cloudy" id="icon"/>
+<span class="number" id="temperature">13</span>
+<span class="units"> °C |<a href="#">°F </a>                                                                                                                                                                                         </span>
+</div>
+
+
+<div class="col-6">
+    <ul>
         
-    </p>
- 
- <div class="container-fluid">
-    <div class="row">
-        <div class="col">
-            <div class="Sat">
-                 Sat
- <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/049/098/original/suncloud.png?1666040291" width="70px"/>
- <br/> 16°
-            </div>
+        <li>Humidity: <span id="humidity"></span>
+       % </li>
+        <li >Wind: <span id="wind"> </span>
+         Km/H
+        </li>
+    </ul>
+</div>
+</div>
+</div>
+<small>
+        <a href="https://github.com/idctina/SheCodesProject.git" target="_blank"> 
             
-        </div>
-        <div class="col">Sun
-           <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/049/104/original/sun-removebg-preview.png?1666042153" width ="70px"/>
-
-           <br/> 18°
-        </div>
-        <div class="col">Mon
-            <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/049/105/original/rain.png?1666042272" width="70px"/>
-
-            <br/> 12°
-        </div>
-        <div class="col">Tues
-             <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/049/098/original/suncloud.png?1666040291" width="70px"/>
-
-             <br/> 14°
-        </div>
-        <div class="col">Wed
-            <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/049/104/original/sun-removebg-preview.png?1666042153" width ="70px"/>
-
-            <br/> 22°
-        </div>
-        
-        
+            Open-soruced</a> by Christina
+    
+    </small>
     </div>
-</div>
-  
-<br/>
-<hr/>
 
-<h1> WEATHER IN POPULAR CITIES </h1>
-<hr/>
-<div class="container-fluid">
-    <div class="row">
-       
-        <div class="col"> NEW YORK <br/>
-           <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/049/104/original/sun-removebg-preview.png?1666042153" width ="70px"/>
-
-           <br/> 26°
-        </div>
-        <div class="col"> PARIS <br/>
-            <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/049/105/original/rain.png?1666042272" width="70px"/>
-
-            <br/> 15°
-        </div>
-        <div class="col"> DUBAI <br/>
-             <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/049/098/original/suncloud.png?1666040291" width="70px"/>
-
-             <br/> 20°
-        </div>
-        <div class="col">TOKYO <br/>
-            <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/049/104/original/sun-removebg-preview.png?1666042153" width ="70px"/>
-
-            <br/> 21°
-        </div>
-        
-        
-    </div>
-</div>
-
-  </div>
-</div>
-
-  </div>
-</div>
-
-<p class="currentLocation">
-    Do you want to know the weather of your current location?
-</p>
-<form class="buttonLocation" id="search-current-location" ><button id="search-current-location">Current Locaton </button>   
-</form>  
-
-
-<script src="src/index.js"></script>
-
+   
+ <script src="src/index.js"></script>
+ 
 </body>
 </html>
