@@ -1,6 +1,7 @@
 
 function displayTemp(response){
     
+celsiusTemperature = response.data.main.temp;
 
 
 let temperatureElement = document.querySelector("#temperature");
@@ -23,7 +24,22 @@ iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.dat
 iconElement.setAttribute("alt", `http://openweathermap.org/img/wn/${response.data.weather[0].description}@2x.png`);
 
 }
+ // metric to imperial pt.2 
 
+function displayFahrenheit(event) {
+    event.preventDefault();
+    let fahrenheitTemp = (celsiusTemperature * 9) / 5 + 32;
+// removing active class of celsisusLink
+celsiusLink.classList.remove("active");
+// adding active class to fahrenheitLink
+fahrenheitLink.classList.add("active");
+    let tempElement = document.querySelector("#temperature");
+    tempElement.innerHTML = Math.round(fahrenheitTemp);
+}
+
+
+
+//search engine
 function search(city) {
 
 let apiKey = "9b7d33f6403073beaeb267d710f4d217";
@@ -41,8 +57,8 @@ search(cityInputElement.value)
     console.log(cityInputElement.value);
 }
 
-search("New York");
 
+//time 
 let now = new Date();
  
 let currentTime = document.querySelector("#date");
@@ -57,7 +73,7 @@ let min = now.getMinutes();
 if (min < 10) {
   min = `0${min}`;}
 
-  
+
 let days = [
     "Sunday",
     "Monday",
@@ -71,7 +87,31 @@ let day = days[now.getDay()];
 
 currentTime.innerHTML = `${day} ${hour}:${min}`;
 
+// (reverting to celsius) pt.2
+function displayCelsius(event){
+    event.preventDefault();
+
+    // adding/removing classes pt.2
+    celsiusLink.classList.add("active");
+    fahrenheitLink.classList.add("active");
+    let tempElement= document.querySelector("#temperature");
+    tempElement.innerHTML = Math.round(celsiusTemperature);
+}
+
+// metric to imperical pt. 3
+
+let celsiusTemperature = null;
 
 
+// search engine pt.2 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
+
+// converting metric to imperical pt.1
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheit)
+
+// metric to imperical pt. 4 (reverting to celsius)
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", displayCelsius)
