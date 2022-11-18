@@ -93,7 +93,7 @@ function displayCelsius(event){
 
     // adding/removing classes pt.2
     celsiusLink.classList.add("active");
-    fahrenheitLink.classList.add("active");
+    fahrenheitLink.classList.remove("active");
     let tempElement= document.querySelector("#temperature");
     tempElement.innerHTML = Math.round(celsiusTemperature);
 }
