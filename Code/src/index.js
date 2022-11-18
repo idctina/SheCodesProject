@@ -23,9 +23,9 @@ iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.dat
 iconElement.setAttribute("alt", `http://openweathermap.org/img/wn/${response.data.weather[0].description}@2x.png`);
 
 }
-function search(event) {
+function handleSubmit(event) {
     event.preventDefault();
-    let  cityInputElement = document.querySelector("#city-input");
+    let cityInputElement = document.querySelector("#city-input");
 
     console.log(cityInputElement.value);
 }
@@ -63,4 +63,4 @@ currentTime.innerHTML = `${day} ${hour}:${min}`;
 
 
 let form = document.querySelector("#search-form");
-form.addEventListener("submit", search);
+form.addEventListener("submit", handleSubmit);
