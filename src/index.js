@@ -57,6 +57,44 @@ search(cityInputElement.value)
     console.log(cityInputElement.value);
 }
 
+//forecast
+function displayForecast() {
+
+let forecastElement = document.querySelector("#forecast");
+let forecastHTML =`<div class="row">`;
+let days =["Sun", "Mon","Tue","Wed", "Thu"];
+days.forEach(function(day) {
+forecastHTML = forecastHTML + `
+    
+    <div class="col-2"> 
+ <div class="weather-forecast-date">
+${day}
+</div>
+
+<img 
+src="https://ssl.gstatic.com/onebox/weather/64/cloudy.png" width="50"/>
+  
+<div class="weather-forecast-temps"> 
+<span class="weather-forecast-temp-max">
+18° 
+</span>
+
+<span class="weather-forecast-temp-min">
+    12°
+</span>
+
+</div> 
+</div> 
+
+`;
+
+});
+
+
+    forecastHTML = forecastHTML +`</div>`;
+    forecastElement.innerHTML = forecastHTML;
+}
+
 
 //time 
 let now = new Date();
@@ -115,3 +153,5 @@ fahrenheitLink.addEventListener("click", displayFahrenheit)
 
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsius)
+
+displayForecast();

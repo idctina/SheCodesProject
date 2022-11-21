@@ -40,3 +40,22 @@ top:-25px;}
 .weather-temp .active:hover {
     text-decoration: none;
 }
+
+.weather-forecast-date {
+    color:black;
+    opacity: 0.8;
+    font-size: 18px;
+}
+.weather-forecast {
+    text-align: center;
+    margin-top: 20xp;
+    
+    
+}
+
+.weather-forecast-temp-min {
+    opacity: 0.5;
+}
+.weather-forecast-temps {
+    font-size:  16px;
+}
