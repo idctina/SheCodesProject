@@ -63,37 +63,49 @@ function handleSubmit(event) {
 search(cityInputElement.value)
     console.log(cityInputElement.value);
 }
+//forecast pt. 2 (i guess, its been a lot)
+function formatDay(timestamp) {
+    let date = new Date(timestamp * 1000);
+    let day = date.getDay();
+
+    let days = ["Sun", "Mon","Tue","Wed", "Thu", "Fri","Sat"];
+    return days[day];
+
+}
 
 //forecast
 function displayForecast(response) {
-console.log(response.data.daily);
+let forecast = response.data.daily;
 let forecastElement = document.querySelector("#forecast");
 let forecastHTML =`<div class="row">`;
 let days =["Sun", "Mon","Tue","Wed", "Thu"];
-days.forEach(function(day) {
+forecast.forEach(function(forecastDay, index) {
+if (index < 6) {
+
 forecastHTML = forecastHTML + `
     
     <div class="col-2"> 
  <div class="weather-forecast-date">
-${day}
+${formatDay(forecastDay.dt)}
 </div>
 
 <img 
-src="https://ssl.gstatic.com/onebox/weather/64/cloudy.png" width="50"/>
+src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" width="50"/>
   
 <div class="weather-forecast-temps"> 
 <span class="weather-forecast-temp-max">
-18° 
+${Math.round(forecastDay.temp.max)}°
 </span>
 
 <span class="weather-forecast-temp-min">
-    12°
+   ${Math.round(forecastDay.temp.min)}°
 </span>
 
 </div> 
 </div> 
 
 `;
+}
 
 });
 
@@ -105,7 +117,7 @@ src="https://ssl.gstatic.com/onebox/weather/64/cloudy.png" width="50"/>
 function getForecast(coordinates) {
     console.log(coordinates);
     let apiKey = "3980a7c8f2a782241a093131b099f993";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(displayForecast);
 }
 
