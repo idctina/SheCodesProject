@@ -104,6 +104,7 @@ ${Math.round(forecastDay.temp.max)}°
 </div> 
 </div> 
 
+
 `;
 }
 
@@ -179,3 +180,4 @@ fahrenheitLink.addEventListener("click", displayFahrenheit)
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsius)
 
+search("London");
