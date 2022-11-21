@@ -173,11 +173,27 @@ form.addEventListener("submit", handleSubmit);
 
 // converting metric to imperical pt.1
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", displayFahrenheit)
+fahrenheitLink.addEventListener("click", displayFahrenheit);
 
 // metric to imperical pt. 4 (reverting to celsius)
 
 let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", displayCelsius)
+celsiusLink.addEventListener("click", displayCelsius);
+
+function showCurrentLocation(position) {
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
+  let apiKey = "445905dadb3d2b0c6f1b916c9d0e3860";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
+  axios.get(apiUrl).then(displayTemp);
+}
+function getCurrentLocation(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(showCurrentLocation);
+}
+let currentLocationButton = document.querySelector("#search-current-location");
+currentLocationButton.addEventListener("click", getCurrentLocation);
+
+
 
 search("London");
